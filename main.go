@@ -10,7 +10,7 @@ import (
 
 func main() {
 	log.Println("main starting")
-	err := config.Init()
+	err := config.Init(".env")
 	if err != nil {
 		log.Fatalf("main failed to init config: %v", err)
 	}
@@ -21,7 +21,6 @@ func main() {
 	if config.Get().Postgres.RunMigrations == "true" {
 		err = s.Postgres.DB.AutoMigrate(
 			&models.Car{},
-			&models.User{},
 		).Error
 		if err != nil {
 			log.Fatalf("main failed to run migrations: %v", err)
@@ -29,7 +28,7 @@ func main() {
 	}
 	r := controller.InitServer(s)
 	log.Println("main starting server")
-	err = r.Run()
+	err = r.Run(config.Get().ListenPort)
 	if err != nil {
 		log.Fatalf("main failed to run server: %v", err)
 	}

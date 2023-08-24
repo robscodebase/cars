@@ -24,9 +24,12 @@ services:
     image: golang:latest
     env_file:
       - ./.env
-    restart: always
-    command: './wait-for -t 30 postgres:5432 -- /bin/app'
-    ports:
-      - '8080:8080'
+    working_dir: /go/src/app
+    volumes:
+      - .:/go/src/app
+    command: './entrypoint.sh'
+    depends_on:
+      - postgres
+      - redis
 volumes:
   data: {}

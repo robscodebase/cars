@@ -1,8 +1,8 @@
 package middleware
 
 import (
+	"cars/config"
 	redis2 "cars/store/redis"
-	tests2 "cars/util/tests"
 	"github.com/stretchr/testify/require"
 	"net/http"
 	"net/http/httptest"
@@ -16,7 +16,8 @@ import (
 const testTokenSecret = "7cP0iH2EfUv9y$B^5p4s%#jL0kZvV@r&"
 
 func TestAuthenticate(t *testing.T) {
-	tests2.SetTestEnvVars()
+	err := config.Init("../.env")
+	require.NoError(t, err)
 	redis, err := redis2.NewRedis()
 	require.NoError(t, err)
 	require.NotNil(t, redis)

@@ -1,0 +1,3 @@
+#!/bin/bash
+apt-get update && apt-get install -y netcat-openbsd && apt-get clean
+./wait-for -t 30 postgres:5432 -- go test -v ./...

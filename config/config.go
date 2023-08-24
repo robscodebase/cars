@@ -30,9 +30,9 @@ type RedisConfig struct {
 	Port            string
 }
 
-func Init() error {
+func Init(file string) error {
 	if !EnvLoaded() {
-		if err := godotenv.Load(); err != nil {
+		if err := godotenv.Load(file); err != nil {
 			return fmt.Errorf("failed to load .env file: %v", err)
 		}
 	}

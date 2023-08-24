@@ -20,7 +20,6 @@ func NewCarAPI(store *store.Store) *CarAPI {
 }
 
 // CreateCar creates a new car
-// curl -X POST -d '{"vin":"12345678901234567","make":"Ford","model":"Mustang","year":2019,"color":"red"}' http://localhost:8080/cars
 func (c *CarAPI) CreateCar(gctx *gin.Context) {
 	var r models.CreateCarRequest
 
@@ -40,7 +39,6 @@ func (c *CarAPI) CreateCar(gctx *gin.Context) {
 }
 
 // GetCar returns a car by VIN
-// curl -X GET http://localhost:8080/cars/12345678901234567
 func (c *CarAPI) GetCar(gctx *gin.Context) {
 	vin := gctx.Param("vin")
 
@@ -58,7 +56,6 @@ func (c *CarAPI) GetCar(gctx *gin.Context) {
 }
 
 // UpdateCar updates a car
-// curl -X PUT -d '{"vin":"12345678901234567","make":"Ford","model":"Mustang","year":2019,"color":"red"}' http://localhost:8080/cars/12345678901234567
 func (c *CarAPI) UpdateCar(gctx *gin.Context) {
 	var r models.Car
 
@@ -77,7 +74,6 @@ func (c *CarAPI) UpdateCar(gctx *gin.Context) {
 }
 
 // DeleteCar deletes a car by VIN
-// curl -X DELETE http://localhost:8080/cars/12345678901234567
 func (c *CarAPI) DeleteCar(gctx *gin.Context) {
 	vin := gctx.Param("vin")
 

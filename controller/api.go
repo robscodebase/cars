@@ -1,12 +1,10 @@
 package controller
 
 import (
-	"cars/config"
 	"cars/controller/rest"
 	"cars/middleware"
 	"cars/store"
 	"github.com/gin-gonic/gin"
-	"log"
 )
 
 type API struct {
@@ -36,6 +34,5 @@ func InitServer(s *store.Store) *gin.Engine {
 	api := NewAPI(s)
 	r := gin.Default()
 	api.InitRoutes(r)
-	log.Println("listening on port", config.Get().ListenPort)
 	return r
 }
