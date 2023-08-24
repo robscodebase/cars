@@ -52,6 +52,7 @@
 * It uses Gin as the web framework and Gorm as the ORM.
 * It uses Postgres as the database and Redis as the cache.
 * The postgres database is used to store the cars and the redis cache is used to store tokens for authentication.
+* Migrations run via Gorm.
 * It uses middleware for authentication.
 * There isn't any custom logic except for the authentication middleware and the unit tests are integration tests.
 
