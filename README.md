@@ -82,3 +82,4 @@
 ## TODO
 * Implement a users api or some method to generate tokens, as of now, tokens are created in tests only.
 * Implement secrets or vault for sensitive data.
+* Update comments and documentation.

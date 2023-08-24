@@ -10,7 +10,6 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"github.com/stretchr/testify/assert"
 )
 
 const testTokenSecret = "7cP0iH2EfUv9y$B^5p4s%#jL0kZvV@r&"
@@ -73,9 +72,9 @@ func TestAuthenticate(t *testing.T) {
 			w := httptest.NewRecorder()
 			router.ServeHTTP(w, req)
 
-			assert.Equal(t, tt.expectedStatus, w.Code)
+			require.Equal(t, tt.expectedStatus, w.Code)
 			if tt.expectedStatus == http.StatusUnauthorized {
-				assert.Contains(t, w.Body.String(), tt.expectedError)
+				require.Contains(t, w.Body.String(), tt.expectedError)
 			}
 		})
 	}
